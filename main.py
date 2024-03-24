@@ -51,15 +51,12 @@ def callback_query(call):
     chat_id = call.message.chat.id
 
     if call.data.startswith('theme_'):
-        # Здесь можно добавить логику обработки выбора темы
         theme = call.data.split('_')[1]
         bot.answer_callback_query(call.id, f"Тема {theme} выбрана.")
         send_difficulty_level_keyboard(chat_id)
     elif call.data.startswith('difficulty_'):
-        # Здесь можно добавить логику обработки выбора уровня сложности
         difficulty = call.data.split('_')[1]
-        bot.answer_callback_query(call.id, f"Уровень сложности {difficulty} выбран.")
-        # Продолжение взаимодействия с пользователем после выбора уровня сложности
+
 
 @bot.message_handler(commands=['settheme'])
 def set_theme(message):
@@ -104,7 +101,6 @@ def handle_reset(message):
         del user_messages_history[user_id]
         bot.reply_to(message, "Ваша история сообщений была успешно очищена.")
     else:
-        # Если история сообщений уже пуста или не существует
         bot.reply_to(message, "Ваша история сообщений уже пуста.")
 
 def update_message_history(user_id, message, is_user_message=True):
@@ -133,6 +129,6 @@ def handle_message(message):
 
 
 if __name__ == '__main__':
-    recreate_table()  # Это удалит существующую таблицу и создаст её заново
+    recreate_table()  
     bot.polling()
 
