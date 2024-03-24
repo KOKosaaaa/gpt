@@ -15,7 +15,7 @@ logging.basicConfig(filename=log_filename, level=logging.INFO, format='%(asctime
 
 # Словарь для хранения истории сообщений пользователей
 user_messages_history = {}
-MAX_HISTORY_LENGTH = 5
+MAX_HISTORY_LENGTH = 15
 
 
 # Функция для отправки клавиатуры с темами
