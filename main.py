@@ -58,23 +58,6 @@ def callback_query(call):
         difficulty = call.data.split('_')[1]
 
 
-@bot.message_handler(commands=['settheme'])
-def set_theme(message):
-    theme = ' '.join(message.text.split()[1:])
-    if theme:
-        update_user_settings(message.from_user.id, theme=theme)
-        bot.reply_to(message, f"Тема установлена на '{theme}'.")
-    else:
-        bot.reply_to(message, "Укажите тему после команды.")
-
-@bot.message_handler(commands=['setlevel'])
-def set_level(message):
-    level = ' '.join(message.text.split()[1:])
-    if level:
-        update_user_settings(message.from_user.id, level=level)
-        bot.reply_to(message, f"Уровень сложности установлен на '{level}'.")
-    else:
-        bot.reply_to(message, "Укажите уровень сложности после команды.")
 
 @bot.message_handler(commands=['debug'])
 def send_log(message):
@@ -88,8 +71,6 @@ def send_log(message):
             bot.reply_to(message, "Файл лога пуст.")
     else:
         bot.reply_to(message, "У вас нет доступа к этой команде.")
-
-
 
 
 @bot.message_handler(commands=['reset'])
